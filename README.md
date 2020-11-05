@@ -66,7 +66,7 @@ docker exec -ti s11_app_mysql_1 /init/runner.sh
 
 - Import users data. Under the hood it calls [special API endpoint](#add-user)
 ```shell script
-./task/runner.sh http://localhost:8080
+./task/importer.sh http://localhost:8080
 ```
 
 As a result you will get Nginx + PHP + MySQL working containers having imported DB structure and users data.
@@ -167,7 +167,6 @@ Validation fail will return `400` HTTP and json with error:
 
 Application error will return`500` HTTP and json with error as well.
 
-
 ###### Flow
 
 - validating new duties input
@@ -192,6 +191,10 @@ It's done intentionally, cause:
 - usually, users are separately managed (but still managed, not injected by input!) in such types of systems - e.g. OpsGenie
 - theoretically you can easily add one more notification channel (e.g. Slack) and allow system to notify user by any available channel. 
 So it's more extendable.
+
+##### List of the duties
+
+// TODO
 
 ### Run tests
 
