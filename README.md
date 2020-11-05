@@ -74,6 +74,21 @@ As a result you will get Nginx + PHP + MySQL working containers having imported 
 
 ### Usage
 
+The idea is to have users data onsite and to do duty setup in one hope (see [Flow](#flow)).
+
+There are allowed users to have empty or non-matched phone pattern at the `users` table.
+It's not allowed to set up such users to the duty, but `users` table have them. 
+It's done intentionally, cause:
+- there are no pre-requirements about this
+- usually, users are separately managed (but still managed, not injected by input!) in such types of systems - e.g. OpsGenie
+- theoretically you can easily add one more notification channel (e.g. Slack) and allow system to notify user by any available channel. 
+So it's more extendable.
+
+Regarding duties, probably at some point some of currently active duties will be expired.
+So there also should be cronjob to clean up stale duties. But this is out of the box.
+Keeping that in mind, there are 2 different endpoints to list duties - [all](#all-duties-list) and [only active](#active-duties-list). 
+
+
 ##### Add user
 
 Add single user (`username` and `phone`):
@@ -184,17 +199,63 @@ There are follow rules:
     - non-empty
     - German number (pattern/format `\+49[0-9]{8,11}`)
 
-There are allowed users to have empty or non-matched phone pattern at the `users` table.
-It's not allowed to set up such users to the duty, but `users` table have them. 
-It's done intentionally, cause:
-- there are no pre-requirements about this
-- usually, users are separately managed (but still managed, not injected by input!) in such types of systems - e.g. OpsGenie
-- theoretically you can easily add one more notification channel (e.g. Slack) and allow system to notify user by any available channel. 
-So it's more extendable.
 
 ##### List of the duties
 
-// TODO
+###### All duties list
+
+List all available duties (including those who are not valid anymore).
+
+```shell script
+curl --location --request GET 'localhost:8080/duty'
+```
+
+```json
+{
+    "duties": [
+        {
+            "id": "3",
+            "started": {
+                "date": "2020-11-05 00:00:00.000000",
+                "timezone_type": 3,
+                "timezone": "UTC"
+            },
+            "ended": {
+                "date": "2020-11-06 23:59:59.000000",
+                "timezone_type": 3,
+                "timezone": "UTC"
+            },
+            "created": {
+                "date": "2020-11-05 17:27:46.000000",
+                "timezone_type": 3,
+                "timezone": "UTC"
+            },
+            "user": {
+                "id": "7",
+                "name": "compoundused",
+                "phone": "+4930038443806",
+                "modified": null,
+                "created": {
+                    "date": "2020-11-05 17:04:32.000000",
+                    "timezone_type": 3,
+                    "timezone": "UTC"
+                }
+            },
+            "user_contact": "+4930038443806",
+            "comment": null
+        },
+        ...
+    ]
+}
+```
+
+###### Active duties list
+
+List only active duties.
+
+```shell script
+curl --location --request GET 'localhost:8080/duty?filter=active'
+```
 
 ### Run tests
 

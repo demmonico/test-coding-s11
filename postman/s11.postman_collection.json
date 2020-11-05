@@ -1,0 +1,172 @@
+{
+	"info": {
+		"_postman_id": "3811b8d2-519d-4c36-a35c-b223ffccd900",
+		"name": "s11",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List Duty",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/duty",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"duty"
+					],
+					"query": [
+						{
+							"key": "user",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Duty Active",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/duty?filter=active",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"duty"
+					],
+					"query": [
+						{
+							"key": "filter",
+							"value": "active"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set Oncall",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "usernames",
+							"value": "compoundused,speakvisible",
+							"type": "text"
+						},
+						{
+							"key": "started",
+							"value": "2020-11-05",
+							"type": "text"
+						},
+						{
+							"key": "ended",
+							"value": "2020-11-06",
+							"type": "text"
+						},
+						{
+							"key": "comment",
+							"value": "test three",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/duty",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"duty"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add user",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "phone",
+							"value": "+49 0000000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/user/testuser",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"testuser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/user/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "ad810cfc-004e-4fd7-86d3-cc9cb40f2e1a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "d5516991-711e-42d7-833a-68b33d361087",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
