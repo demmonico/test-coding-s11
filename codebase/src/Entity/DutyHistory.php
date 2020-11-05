@@ -78,4 +78,9 @@ class DutyHistory
 
         $this->created = new \DateTimeImmutable();
     }
+
+    public function getAct(): string
+    {
+        return $this->act;
+    }
 }

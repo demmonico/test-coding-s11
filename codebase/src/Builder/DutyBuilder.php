@@ -6,7 +6,7 @@ use App\Entity\Duty;
 use App\Repository\UserRepository;
 use App\Request\SetDutyRequest;
 
-final class DutyBuilder
+class DutyBuilder
 {
     private UserRepository $userRepository;
 

@@ -276,3 +276,8 @@ $ docker exec -ti s11_app_php_1 vendor/bin/phpspec run
 8 examples (8 passed)
 311ms
 ```
+
+### TODOs
+
+There is nice to have also API tests to test controller's logic and behaviour system overall. 
+I'd like to use Behat or Mocha, but for simple tests we can also use provided Postman collection.
