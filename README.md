@@ -271,10 +271,10 @@ Output:
 
 ```shell script
 $ docker exec -ti s11_app_php_1 vendor/bin/phpspec run
-                                      100%                                       8
-3 specs
-8 examples (8 passed)
-311ms
+                                      100%                                       12
+4 specs
+12 examples (12 passed)
+282ms
 ```
 
 ### TODOs
